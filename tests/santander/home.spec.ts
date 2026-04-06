@@ -18,16 +18,26 @@ test.describe('Santander Boost — Home Page', () => {
 
   test.beforeEach(async ({ page }) => {
     const config = loadConfig();
+
+    // Clean session for every test
+    await page.context().clearCookies();
+    await page.evaluate(() => {
+      try { localStorage.clear(); } catch (_) {}
+      try { sessionStorage.clear(); } catch (_) {}
+    });
+
     await page.goto(config.baseUrl);
     await page.waitForLoadState('domcontentloaded');
 
     const landing = new LandingPage(page);
     const loginPage = new LoginPage(page);
+    const homePage = new HomePage(page);
 
     await landing.waitForPageReady();
     await landing.goToLogin();
     await loginPage.waitForPageReady();
     await loginPage.login(CREDENTIALS.email, CREDENTIALS.password);
+    await homePage.waitForPageReady();
   });
 
   // ── Suite 1: Home Page Elements ───────────────────────────────────────────

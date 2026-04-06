@@ -32,6 +32,9 @@ class SlackReporter {
   }
 
   onTestEnd(test, result) {
+    // Skip intermediate retries — only record the final outcome
+    if (result.status !== 'passed' && result.retry < test.retries) return;
+
     const title = test.title;
     if (result.status === 'passed')        this.passed.push(title);
     else if (result.status === 'skipped')  this.skipped.push(title);
