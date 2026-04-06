@@ -1,0 +1,20 @@
+{
+  "name": "santander-automation",
+  "version": "1.0.0",
+  "description": "Playwright automation framework for Santander Boost",
+  "scripts": {
+    "test:santander-stage": "cross-env CLIENT=santander ENV=stage playwright test tests/santander --project=chromium",
+    "test:santander-stage:auth": "cross-env CLIENT=santander ENV=stage playwright test tests/santander/auth.spec.ts --project=chromium",
+    "test:santander-stage:home": "cross-env CLIENT=santander ENV=stage playwright test tests/santander/home.spec.ts --project=chromium",
+    "allure:generate": "cross-env JAVA_HOME=\"C:\\Program Files\\Java\\jdk-17\" allure generate allure-results --clean -o allure-report",
+    "allure:open": "cross-env JAVA_HOME=\"C:\\Program Files\\Java\\jdk-17\" allure open allure-report",
+    "allure:report": "cross-env JAVA_HOME=\"C:\\Program Files\\Java\\jdk-17\" allure generate allure-results --clean -o allure-report && cross-env JAVA_HOME=\"C:\\Program Files\\Java\\jdk-17\" allure open allure-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.0.0",
+    "cross-env": "^7.0.3",
+    "allure-playwright": "^3.0.0",
+    "allure-commandline": "^2.30.0"
+  }
+}
