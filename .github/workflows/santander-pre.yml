@@ -40,7 +40,7 @@ jobs:
           CLIENT: santander
           ENV: stage
           CI: true
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_UI }}
           REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: npm run test:santander-stage:auth
 
@@ -50,7 +50,7 @@ jobs:
           CLIENT: santander
           ENV: stage
           CI: true
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_UI }}
           REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: npm run test:santander-stage:home
 
