@@ -9,9 +9,9 @@ on:
 
 jobs:
   test:
-    name: Run Auth & Home Tests
+    name: Run All Tests
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout code
@@ -35,24 +35,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Run Auth tests
+      - name: Run all Santander tests
         env:
           CLIENT: santander
           ENV: stage
           CI: true
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_UI }}
           REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: npm run test:santander-stage:auth
-
-      - name: Run Home tests
-        if: always()
-        env:
-          CLIENT: santander
-          ENV: stage
-          CI: true
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_UI }}
-          REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: npm run test:santander-stage:home
+        run: npm run test:santander-stage
 
       - name: Generate Allure report
         if: always()

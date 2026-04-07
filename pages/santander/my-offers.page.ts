@@ -8,11 +8,9 @@ export class MyOffersPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.favouritesTab = page.getByRole('tab', { name: /favourites/i })
-      .or(page.getByText('Favourites', { exact: true }));
-    this.activatedTab  = page.getByRole('tab', { name: /activated/i })
-      .or(page.getByText('Activated', { exact: true }));
-    this.navigationBar = page.locator('nav#footerContainer');
+    this.favouritesTab = page.getByRole('tab', { name: /favourites/i }).first();
+    this.activatedTab  = page.getByRole('tab', { name: /activated/i }).first();
+    this.navigationBar = page.locator('nav').first();
   }
 
   async waitForPageReady(): Promise<void> {

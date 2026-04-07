@@ -12,13 +12,13 @@ export class HelpPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.navigationBar           = page.locator('nav#footerContainer');
-    this.gettingStartedAccordion = page.getByText('Getting Started');
-    this.cashbackAccordion       = page.getByText('Cashback');
-    this.voucherCodesAccordion   = page.getByText('Voucher and Discount codes');
-    this.prizeDrawsAccordion     = page.getByText('Prize Draws, Instant Wins and Giveaways');
-    this.privacyAccordion        = page.getByText('Privacy and Personal Data');
-    this.accountServicesAccordion = page.getByText('Account Services');
+    this.navigationBar           = page.locator('nav').first();
+    this.gettingStartedAccordion  = page.getByRole('button', { name: 'Getting Started' });
+    this.cashbackAccordion        = page.getByRole('button', { name: 'Cashback' });
+    this.voucherCodesAccordion    = page.getByRole('button', { name: 'Voucher and Discount codes' });
+    this.prizeDrawsAccordion      = page.getByRole('button', { name: 'Prize Draws, Instant Wins and Giveaways' });
+    this.privacyAccordion         = page.getByRole('button', { name: 'Privacy and Personal Data' });
+    this.accountServicesAccordion = page.getByRole('button', { name: 'Account Services' });
   }
 
   async waitForPageReady(): Promise<void> {

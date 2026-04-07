@@ -7,9 +7,8 @@ test-results/
 allure-results/
 allure-report/
 
-# Environment files — keep .env.stage committed (no secrets except webhook which is in GitHub Secrets)
-# Uncomment below if you want to exclude env files entirely
-# env/
+# Environment files contain secrets — never commit
+env/
 
 # OS
 .DS_Store

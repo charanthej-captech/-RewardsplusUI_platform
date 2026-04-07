@@ -14,7 +14,7 @@ export class ProfilePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.navigationBar           = page.locator('nav#footerContainer');
+    this.navigationBar           = page.locator('nav').first();
     this.confirmedCashback       = page.getByText('Confirmed cashback').locator('..').getByText(/£/);
     this.cashbackEarnedToDate    = page.getByText('Cashback earned to date').locator('..').getByText(/£/);
     this.updateInterestsLink     = page.getByText('Update my interests');
